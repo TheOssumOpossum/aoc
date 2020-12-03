@@ -2,8 +2,10 @@
 
 import re
 
-input = open("day02.txt", "r")
-# input = open("day02_test.txt", "r")
+day = "02"
+
+input = open("../input/day" + day + ".txt", "r")
+# input = open("../tst/day" + day + "_test.txt", "r")
 
 #part 1
 # valid = 0

@@ -1,17 +1,19 @@
 # https://adventofcode.com/2020/day/1
 
-input = open("day01.txt", "r")
-# input = open("day01_test.txt", "r")
+day = "01"
+
+input = open("../input/day" + day + ".txt", "r")
+# input = open("../tst/day" + day + "_test.txt", "r")
 
 #part 1
-nums = set()
-for n in input:
-    n = int(n)
-    if n in nums:
-        print(n*(2020-n))
-        break
-    else:
-        nums.add(2020-n)
+# nums = set()
+# for n in input:
+#     n = int(n)
+#     if n in nums:
+#         print(n*(2020-n))
+#         break
+#     else:
+#         nums.add(2020-n)
 
 
 #part 2
