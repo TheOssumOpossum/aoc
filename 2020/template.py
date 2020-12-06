@@ -1,16 +1,25 @@
-# https://adventofcode.com/2020/day/1
+# https://adventofcode.com/2020/day/0
 import re
 
 day = "0"
 
-# txt = open("../input/day" + day + ".txt", "r")
-txt = open("../tst/day" + day + "_test.txt", "r")
+file_path = "../input/day{0}.txt".format(day)
+file_path = "../tst/day{0}_test.txt".format(day)
 
-dic = {}
-i = 0
-max_len = 0
+txt = open(file_path, "r")
+lines = txt.readlines().append("\n")
 
-for l in txt:
+# dic = {}
+# i = 0
+# max_len = 0
+
+for l in lines:
+    #Handle empty line
+    # if l == "\n":
+        # ''
+
+    l = l.strip()
+
     #Get max length of line
     # if len(l) > max_len:
     #     max_len = len(l)
@@ -18,15 +27,13 @@ for l in txt:
     #Build 2D Map
     # j = 0
     # for c in l:
-    #     if c == '\n':
-    #         continue
     #     dic[(i,j)] = c
     #     j += 1
 
     #Split line into terms by the delimiters
     # delimiters = [' ', ',' , '\:' ]
-    # rex_split_string = ''.join([c + '|' for c in delimiters])[:-1]
-    # terms = re.split(rex_split_string, l[:-1])
+    # rex_split_string = ''.join([c + '|' for c in delimiters])
+    # terms = re.split(rex_split_string, l)
     # dic[i] = terms
 
     #Increment row number
