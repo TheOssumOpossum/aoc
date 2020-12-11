@@ -62,38 +62,38 @@ day = "11"
 #     # print('')
 #     for i in range(height+1):
 #         for j in range(max_width):
-            if dic[(i,j)] == 'L':
-                if (i - 1 < 0 or prev_dic[(i-1,j)] != '#'):
-                    if (i + 1 >= height+1 or prev_dic[(i+1,j)] != '#'):
-                        if (j - 1 < 0 or prev_dic[(i,j-1)] != '#'):
-                            if (j + 1 >= max_width or prev_dic[(i,j+1)] != '#'):
-                                if (i - 1 < 0 or j - 1 < 0 or prev_dic[(i-1,j-1)] != '#'):
-                                    if (i - 1 < 0 or j + 1 >= max_width or prev_dic[(i-1,j+1)] != '#'):
-                                        if (i + 1 >= height+1 or j + 1 >= max_width or prev_dic[(i+1,j+1)] != '#'):
-                                            if (i + 1 >= height+1 or j - 1 < 0 or prev_dic[(i+1,j-1)] != '#'):
-                                                dic[(i,j)] = '#'
-                                                continue
-            elif dic[(i,j)] == '#':
-                occupied = 0
-                if (i - 1 >= 0 and prev_dic[(i-1,j)] == '#'):
-                    occupied += 1
-                if (i + 1 < height+1 and prev_dic[(i+1,j)] == '#'):
-                    occupied += 1
-                if (j - 1 >= 0 and prev_dic[(i,j-1)] == '#'):
-                    occupied += 1
-                if (j + 1 < max_width and prev_dic[(i,j+1)] == '#'):
-                    occupied += 1
-                if (i - 1 >= 0 and j - 1 >= 0 and prev_dic[(i-1,j-1)] == '#'):
-                    occupied += 1
-                if (i - 1 >= 0 and j + 1 < max_width and prev_dic[(i-1,j+1)] == '#'):
-                    occupied += 1
-                if (i + 1 < height+1 and j + 1 < max_width and prev_dic[(i+1,j+1)] == '#'):
-                    occupied += 1
-                if (i + 1 < height+1 and j - 1 >= 0 and prev_dic[(i+1,j-1)] == '#'):
-                    occupied += 1
-                if occupied >= 4:
-                    dic[(i,j)] = 'L'
-                continue
+#             if dic[(i,j)] == 'L':
+#                 if (i - 1 < 0 or prev_dic[(i-1,j)] != '#'):
+#                     if (i + 1 >= height+1 or prev_dic[(i+1,j)] != '#'):
+#                         if (j - 1 < 0 or prev_dic[(i,j-1)] != '#'):
+#                             if (j + 1 >= max_width or prev_dic[(i,j+1)] != '#'):
+#                                 if (i - 1 < 0 or j - 1 < 0 or prev_dic[(i-1,j-1)] != '#'):
+#                                     if (i - 1 < 0 or j + 1 >= max_width or prev_dic[(i-1,j+1)] != '#'):
+#                                         if (i + 1 >= height+1 or j + 1 >= max_width or prev_dic[(i+1,j+1)] != '#'):
+#                                             if (i + 1 >= height+1 or j - 1 < 0 or prev_dic[(i+1,j-1)] != '#'):
+#                                                 dic[(i,j)] = '#'
+#                                                 continue
+#             elif dic[(i,j)] == '#':
+#                 occupied = 0
+#                 if (i - 1 >= 0 and prev_dic[(i-1,j)] == '#'):
+#                     occupied += 1
+#                 if (i + 1 < height+1 and prev_dic[(i+1,j)] == '#'):
+#                     occupied += 1
+#                 if (j - 1 >= 0 and prev_dic[(i,j-1)] == '#'):
+#                     occupied += 1
+#                 if (j + 1 < max_width and prev_dic[(i,j+1)] == '#'):
+#                     occupied += 1
+#                 if (i - 1 >= 0 and j - 1 >= 0 and prev_dic[(i-1,j-1)] == '#'):
+#                     occupied += 1
+#                 if (i - 1 >= 0 and j + 1 < max_width and prev_dic[(i-1,j+1)] == '#'):
+#                     occupied += 1
+#                 if (i + 1 < height+1 and j + 1 < max_width and prev_dic[(i+1,j+1)] == '#'):
+#                     occupied += 1
+#                 if (i + 1 < height+1 and j - 1 >= 0 and prev_dic[(i+1,j-1)] == '#'):
+#                     occupied += 1
+#                 if occupied >= 4:
+#                     dic[(i,j)] = 'L'
+#                 continue
 
 # # occupied = 0
 # # for i in range(height+1):
