@@ -1,4 +1,4 @@
-# https://adventofcode.com/2020/day/0
+# https://adventofcode.com/2020/day/10
 
 day = "10"
 

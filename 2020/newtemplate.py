@@ -10,7 +10,6 @@ result = 0
 for l in txt:
     if l == "\n":
         ''
-
     l = l.strip()
 
 print(result)
