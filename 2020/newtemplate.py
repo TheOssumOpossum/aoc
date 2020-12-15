@@ -4,7 +4,8 @@ day = "0"
 
 txt = open("../input/day" + day + ".txt", "r")
 txt = open("../tst/day" + day + "_test.txt", "r")
-
+txt = txt.readlines()
+txt.append("\n")
 result = 0
 
 for l in txt:
