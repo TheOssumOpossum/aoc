@@ -34,7 +34,7 @@ lines = f.read().strip().splitlines()
 s = 0
 m = {}
 for i, line in enumerate(lines):
-l = line.strip()
+    l = line.strip()
 ''')
 f.close()
 f = open("{}/day{}/day{}_sample.txt".format(YEAR,day,day),"w")

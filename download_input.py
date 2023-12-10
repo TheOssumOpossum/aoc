@@ -25,7 +25,8 @@ if len(sys.argv) > 1:
     else:
         year = year_today
     if 0 < day < 31 or day > day_today and year == year_today:
-        exit("No input exists for 12/{}/{}".format(day, year))
+        # exit("No input exists for 12/{}/{}".format(day, year))
+        pass
 else:
     day = day_today
     year = year_today
