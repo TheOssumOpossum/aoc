@@ -1,5 +1,6 @@
 
 import math 
+import functools
 
 class grid:
     rows = [[]]
@@ -61,6 +62,14 @@ class grid:
     def rows(self, rows):
         self._rows = rows
         self.cols = [list(x) for x in list(zip(*rows))]
+        
+    def getVals(self, vals):
+        if not isinstance(vals, set):
+            vals = set(vals)
+        return [x.pos for x in list(filter(lambda x: x.val in vals, [x for x in self.cells()]))]
+        
+    def cells(self):
+        return [cell(row,col,val) for row in range(self.height) for col in range(self.width) for val in self.rows[row][col]]
 
     def addRow(self, row):
         if len(self.rows[0]) != 0 and len(row) != len(self.rows[0]):
@@ -200,3 +209,41 @@ class grid:
             else:
                 vals.append(self.rows[i[0]][i[1]])
         return vals
+
+class cell:
+    def __init__(self, row, col, val):
+        self.row = row
+        self.col = col
+        self.val = val
+
+    def __str__(self):
+        return f'|row,col:({self.row},{self.col}) ' + f'val:\'{self.val}\'|' if isinstance(self.val, str) else f'val:{self.val}|'
+    
+    def __repr__(self):
+        return self.__str__()
+
+    def __getitem__(self, items):
+        match items:
+            case 0:
+                return self.row
+            case 1:
+                return self.col
+            case 2:
+                return self.val
+            case _:
+                assert False
+                
+    def __setitem__(self, key, value):
+        match key:
+            case 0:
+                self.row = value
+            case 1:
+                self.col = value
+            case 2:
+                self.val = value
+            case 3:
+                assert False
+                
+    @property
+    def pos(self):
+        return (self.row, self.col)
