@@ -9,8 +9,7 @@ lines = f.read().strip().splitlines()
 # part 1 and 2
 hands = []
 hands2 = []
-vals = ([(x, i) for i, x in enumerate('123456789TJQKA')])
-vals = dict(vals)
+vals = {x: i for i, x in enumerate('123456789TJQKA')}
 
 for i, line in enumerate(lines):
     l = line.strip()
@@ -43,7 +42,7 @@ for i, line in enumerate(lines):
             hands.append((7, cards, bet))
         elif 4 in j_counts:
             hands.append((6, cards, bet))
-        elif threes and twos or threes and js or twos == 2 and js == 1:
+        elif threes and twos or twos == 2 and js == 1:
             hands.append((5, cards, bet))
         elif 3 in j_counts:
             hands.append((4, cards, bet))
@@ -58,7 +57,7 @@ for i, line in enumerate(lines):
     analyze(hands2, js, j_counts)
 
 def score(hands, vals):
-    hands = sorted(hands, key = lambda x: (x[0], vals[x[1][0]], vals[x[1][1]], vals[x[1][2]], vals[x[1][3]], vals[x[1][4]]))
+    hands = sorted(hands, key = lambda x: tuple([x[0]] + [vals[x[1][i]] for i in range(5)]))
     s = 0
     for i, a in enumerate(hands):
         s += (i+1) * int(a[2])
