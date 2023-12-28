@@ -1,8 +1,25 @@
-# creates folders and files for the next day (run before midnight)
-# creates a temporary download script to download input for the current day (run that after midnight)
-$day = [int]$(Get-Date -Format "dd") + 1
-$year = $(Get-Date -Format "yyyy")
-python new_day.py
-cd $year\day$day\
-echo "python ..\..\download_input.py $day $year" >> download.ps1
-echo "rm ./download.ps1" >> download.ps1
+# Creates files and downloads inputs for prior advent of code problems.
+param($day, $year)
+if (($year -eq $null)) {
+    $month = $(Get-Date -Format "MM")
+    if (($day -eq $null)){
+        $day = $(Get-Date -Format "dd")
+    }
+    if (!($month -eq 12) -or ($day -gt 25)) {
+        Write-Host "Please specify a day and year."
+        exit
+    }
+    $year = $(Get-Date -Format "yyyy")
+}
+if ($day -gt 2000) {
+    $tmp = $day
+    $day = $year
+    $year = $tmp
+}
+if (($day -lt 1) -or ($day -gt 25) -or ($year -lt 2015) -or ($year -gt $(Get-Date -Format "yyyy"))){
+    Write-Host "Cannot init $year day $day"
+    exit
+}
+python3 new_day.py $day $year
+python3 download_input.py $day $year
+cd $year

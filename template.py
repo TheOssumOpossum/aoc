@@ -2,12 +2,25 @@ import sys
 import re
 import collections
 import functools
+from copy import deepcopy
 
-day = ''' + '\'{}\''.format(day) + '''
-f = open('{}day{}_{}.txt'.format('../../input/2023/' if len(sys.argv) >= 2 and sys.argv[1] == '1' else '',day,'data' if len(sys.argv) >= 2 and sys.argv[1] == '1' else 'sample{}'.format(sys.argv[1]) if len(sys.argv) >= 2 and sys.argv[1].isnumeric() and int(sys.argv[1]) >= 2 else 'sample'))
-lines = f.read().strip().splitlines()
+f = open(f'{f"../input/{__file__[-15:-11]}/" if (len(sys.argv) >= 2 and sys.argv[1] == "1") else ""}day{__file__[-5:-3]}_{"data" if (len(sys.argv) >= 2 and sys.argv[1] == "1") else "sample" if len(sys.argv) < 2 or sys.argv[1] == "0" else "sample" + sys.argv[1]}.txt')
+txt = f.read().strip()
+lines = txt.split('\n')
+groups = txt.split('\n\n')
 
-s = 0
+directions = [(0,1),(-1,0),(0,-1),(1,0)]
 m = {}
+s = 0
 for i, line in enumerate(lines):
-    l = line.strip()
+    pass
+
+for i, line in enumerate(lines):
+    for j, char in enumerate(line):
+        m[(i,j)] = char
+
+for i, group in enumerate(groups):
+    for j, line in enumerate(group.splitlines()):
+        pass
+
+print(s)

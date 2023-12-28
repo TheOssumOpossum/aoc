@@ -2,44 +2,45 @@ import sys
 import os
 from datetime import date 
 
-# YEAR = 2023
+if not os.path.exists('new_day.py'):
+    print('This script should be run from the root!')
+    sys.exit()
 
-
-YEAR  = date.today().strftime("%Y").lstrip("0")
-day = str(int(date.today().strftime("%d"))+1)
+YEAR  = date.today().strftime("%Y")
+DAY = str(int(date.today().strftime("%d"))+1)
+MONTH = date.today().strftime("%m")
+if (MONTH != '12' or int(DAY) > 25) and len(sys.argv) < 3:
+    print('Please a specify a year and date.')
+    sys.exit()
 
 if (len(sys.argv) >= 2):
-    day = int(sys.argv[1])
-    day = '{:02d}'.format(day)
+    DAY = int(sys.argv[1])
 if (len(sys.argv) >= 3):
     YEAR = sys.argv[2]
-    
-print(f"Creating files for {YEAR} day:{day}")
-    
-if not os.path.exists(os.getcwd() + '/' + str(YEAR)):
-    os.makedirs(os.getcwd() + '/' + str(YEAR))
-if not os.path.exists(os.getcwd() + '/' + str(YEAR) + '/' + 'day{}'.format(day)):
-    os.makedirs(os.getcwd() + '/' + str(YEAR) + '/' + 'day{}'.format(day))
-f = open("{}/day{}/day{}.py".format(YEAR,day,day),"w")
-f.write(
-'''import sys
-import re
-import collections
-import functools
+    if int(DAY) >= 2000:
+        DAY, YEAR = YEAR, DAY
 
-day = ''' + '\'{}\''.format(day) + '''
-f = open('{}day{}_{}.txt'.format('../../input/2023/' if len(sys.argv) >= 2 and sys.argv[1] == '1' else '',day,'data' if len(sys.argv) >= 2 and sys.argv[1] == '1' else 'sample{}'.format(sys.argv[1]) if len(sys.argv) >= 2 and sys.argv[1].isnumeric() and int(sys.argv[1]) >= 2 else 'sample'))
-lines = f.read().strip().splitlines()
+DAY = '{:02d}'.format(int(DAY))
+if int(YEAR) < 2015 or 0 > int(DAY) > 25:
+    print(f'Cannot create files for {YEAR} day:{DAY}')
+    sys.exit()
+print(f'Creating files for {YEAR} day:{DAY}')
+    
+CWD = os.getcwd()
 
-s = 0
-m = {}
-for i, line in enumerate(lines):
-    l = line.strip()
-''')
+if not os.path.exists(f'{CWD}/{YEAR}'):
+    os.makedirs(f'{CWD}/{YEAR}')
+if not os.path.exists(f'{CWD}/input/{YEAR}'):
+    os.makedirs(f'{CWD}/input/{YEAR}')
+f = open("template.py")
+template = f.read()
 f.close()
-f = open("{}/day{}/day{}_sample.txt".format(YEAR,day,day),"w")
+f = open(f'{YEAR}/day{DAY}.py',"w")
+f.write(template)
 f.close()
-f = open("{}/day{}/day{}_sample2.txt".format(YEAR,day,day),"w")
+f = open(f'{YEAR}/day{DAY}_sample.txt',"w")
 f.close()
-f = open("input/{}/day{}_data.txt".format(YEAR,day,day),"w")
+f = open(f'{YEAR}/day{DAY}_sample2.txt',"w")
+f.close()
+f = open(f'input/{YEAR}/day{DAY}_data.txt',"w")
 f.close()
