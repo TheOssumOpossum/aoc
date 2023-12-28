@@ -47,7 +47,7 @@ if r.text:
     if not os.path.exists(f"{script_dir}/input/{year}"):
         os.mkdir(f"{script_dir}/input/{year}")
     os.chdir(f"{script_dir}/input/{year}")
-    with open("day{:02d}_data.txt".format(int(day)),"w") as f:
+    with open("{:02d}_data.txt".format(int(day)),"w") as f:
         f.write(r.text)
 else:
     print(f'Unable to download input for {year} day:{day}, probably an issue with cookies')

@@ -26,6 +26,7 @@ for i, line in enumerate(lines):
         y_add = directions[dir][1] * dist
 
         def addViz(x,y):
+            global ss
             if (x,y) not in viz:
                 viz.add((x,y))
             elif ss is None:
