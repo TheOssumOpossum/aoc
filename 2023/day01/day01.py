@@ -5,12 +5,14 @@ f = open('{}day{}_{}.txt'.format('../../input/2023/' if len(sys.argv) >= 2 and s
 lines = f.read().strip().splitlines()
 
 import re
+
 #part 1
-# s = 0
-# for line in lines:
-#     l = line.strip()
-#     n = re.findall("\d",l)
-#     s += int(n[0]) * 10 + int(n[-1])
+s = 0
+for line in lines:
+    l = line.strip()
+    n = re.findall("\d",l)
+    s += int(n[0]) * 10 + int(n[-1])
+print(s)
 
 #part 2
 ss = 0
@@ -87,7 +89,6 @@ for line in lines:
             b = 8
             break
     ss += a*10 + b
-    
-    
+
+
 print(ss)
-        
