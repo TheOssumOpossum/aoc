@@ -1,5 +1,8 @@
 # Creates files and downloads inputs for prior advent of code problems.
 param($day, $year)
+$scriptpath = $MyInvocation.MyCommand.Path
+$dir = Split-Path $scriptpath
+cd $dir
 if (($year -eq $null)) {
     $month = $(Get-Date -Format "MM")
     if (($day -eq $null)){

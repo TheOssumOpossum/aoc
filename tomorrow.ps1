@@ -1,5 +1,8 @@
 # creates folders and files for the next day (run before midnight)
 # creates a temporary download script to download input for the current day (run that after midnight)
+$scriptpath = $MyInvocation.MyCommand.Path
+$dir = Split-Path $scriptpath
+cd $dir
 $day = [int]$(Get-Date -Format "dd") + 1
 $year = $(Get-Date -Format "yyyy")
 $month = $(Get-Date -Format "MM")
