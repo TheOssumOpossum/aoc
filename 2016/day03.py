@@ -1,11 +1,9 @@
-import os
 import sys
 import re
+sys.path.append('../')
+from lib.read import read
 
-f = open(f'{f"{os.path.dirname(os.path.realpath(__file__))}/../input/{os.path.dirname(os.path.realpath(__file__))[-4:]}/" if (len(sys.argv) >= 2 and sys.argv[1] == "1") else f"{os.path.dirname(os.path.realpath(__file__))}/"}{os.path.split(os.path.realpath(__file__))[1][3:5]}_{"data" if (len(sys.argv) >= 2 and sys.argv[1] == "1") else "sample" if len(sys.argv) < 2 or sys.argv[1] == "0" else "sample" + sys.argv[1]}.txt')
-txt = f.read().strip()
-lines = txt.split('\n')
-
+lines, groups = read(__file__)
 
 #Part 1
 s = 0
