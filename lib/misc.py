@@ -16,15 +16,34 @@ def _transform(ls, f):
     else:
         return f(ls)
 
+# [[0, 1]
+#  [2, 3]]
+# ==>
+# [[0, 2]
+#  [1, 3]]
 def transpose(ls):
     return _transform(ls, lambda x: list(map(list, zip(*x))))
-    
+
+# [[0, 1]
+#  [2, 3]]
+# ==>
+# [[1, 3]
+#  [0, 2]]
 def rot270(ls):
-    return _transform(ls, lambda x: reversed(list(map(list, zip(*x)))))
+    return list(_transform(ls, lambda x: reversed(list(map(list, zip(*x))))))
 
+# [[0, 1]
+#  [2, 3]]
+# ==>
+# [[2, 0]
+#  [3, 1]]
 def rot90(ls):
-    return _transform(ls, lambda x: list(map(list,zip(*reversed(x)))))
+    return list(_transform(ls, lambda x: list(map(list,zip(*reversed(x))))))
 
+# [[0, 1]
+#  [2, 3]]
+# ==>
+# [0, 1, 2, 3]
 def flatten(ls):
     def flatten_help(ls):
         for x in ls:
