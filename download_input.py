@@ -12,9 +12,9 @@ if not (".adventofcode.com" in str(cj)):
     cj = browser_cookie3.chrome()
     
 #Get today number of day
-day_today = date.today().strftime("%d").lstrip("0")
-year_today = date.today().strftime("%Y")
-MONTH = date.today().strftime("%m")
+day_today = int(date.today().strftime("%d").lstrip("0"))
+year_today = int(date.today().strftime("%Y"))
+MONTH = int(date.today().strftime("%m"))
 
 #If we provide an argument, use it as the desired day. Ex: ./startDay.py 5. Otherwise use day_today
 if len(sys.argv) > 1:
@@ -25,13 +25,13 @@ if len(sys.argv) > 1:
             day, year = year, day
     else:
         year = year_today
-    if (day < 0 or day > 25 or day > int(day_today) and year == int(year_today) or year > int(year_today)):
+    if (day < 0 or day > 25 or day > day_today and year == year_today or year > int(year_today)):
         exit(f"No input exists for 12/{day}/{year}")
 else:
     day = day_today
     year = year_today
 
-if (MONTH != '12' or int(day) > 25) and len(sys.argv) < 3:
+if (MONTH != 12 or int(day) > 25) and len(sys.argv) < 3:
     print('Please a specify a year and date.')
     sys.exit()
 
