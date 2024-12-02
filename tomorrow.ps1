@@ -2,15 +2,20 @@
 # creates a temporary download script to download input for the current day (run that after midnight)
 $scriptpath = $MyInvocation.MyCommand.Path
 $dir = Split-Path $scriptpath
-cd $dir
-$day = [int]$(Get-Date -Format "dd") + 1
+Set-Location $dir
+$day = ((Get-Date).AddDays(1)).ToString("dd")
+$dayint = [int]$day
 $year = $(Get-Date -Format "yyyy")
 $month = $(Get-Date -Format "MM")
-if (($day -gt 25) -or !($month -eq 12)){
+if (($dayint -gt 25) -or !($month -eq 12)){
     Write-Host "Cannot init $year day $day"
     exit
 }
 python3 new_day.py
-cd $year
-echo "python3 ..\download_input.py $day $year" >> download.ps1
-echo "rm ./download.ps1" >> download.ps1
+Set-Location $year
+Clear-Content .\download.ps1
+Write-Output "python3 ..\download_input.py $day $year" >> download.ps1
+Write-Output "if ($?) { Remove-Item ./download.ps1} " >> download.ps1
+[Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 1")
+[Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 0")
+[Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("./download.ps1")

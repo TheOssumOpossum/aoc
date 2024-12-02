@@ -49,5 +49,7 @@ if r.text:
     os.chdir(f"{script_dir}/input/{year}")
     with open("{:02d}_data.txt".format(int(day)),"w") as f:
         f.write(r.text)
+    sys.exit(0)
 else:
     print(f'Unable to download input for {year} day:{day}, probably an issue with cookies')
+    sys.exit(1)
