@@ -13,9 +13,9 @@ if (($dayint -gt 25) -or !($month -eq 12)){
 }
 python3 new_day.py
 Set-Location $year
-Clear-Content .\download.ps1
+if ([System.IO.File]::Exists(".\download.ps1")) {Clear-Content ".\download.ps1"}
 Write-Output "python3 ..\download_input.py $day $year" >> download.ps1
-Write-Output "if ($?) { Remove-Item ./download.ps1} " >> download.ps1
+Write-Output "if (`$?) { Remove-Item ./download.ps1} " >> download.ps1
 [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 1")
 [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 0")
 [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("./download.ps1")
