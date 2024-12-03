@@ -10,18 +10,16 @@ for l in lines:
     inp += l
                     
 s = 0
-muls = re.findall('mul\(\d+,\d+\)', inp)
-for mul in muls:
-    a,b = re.findall('\d+', mul)
+muls = re.findall('mul\((\d+),(\d+)\)', inp)
+for a, b in muls:
     s += int(a) * int(b)
 print(s)
 
 ss = 0
 dos = re.split('do\(\)', inp)
 for d in dos:
-    muls = re.split('don\'t\(\)', d)
-    muls = re.findall('mul\(\d+,\d+\)', muls[0])
-    for mul in muls:
-        a,b = re.findall('\d+', mul)
+    do = re.split('don\'t\(\)', d)[0]
+    muls = re.findall('mul\((\d+),(\d+)\)', do)
+    for a, b in muls:
         ss += int(a) * int(b)
 print(ss)
