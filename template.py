@@ -9,7 +9,7 @@ from lib.misc import transpose, rot90, rot270, flatten
 
 lines, groups = read(__file__)
 
-directions = [(0,1),(-1,0),(0,-1),(1,0)]
+directions = [(0,1),(-1,0),(0,-1),(1,0)] # right, up, left, down
 directions_map = {y:directions[x] for x,y in enumerate('RULD')}
 m = {}
 viz = set()
