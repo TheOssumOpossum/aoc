@@ -26,3 +26,5 @@ if (([int]$day -lt 1) -or ([int]$day -gt 25) -or ([int]$year -lt 2015) -or ([int
 python3 new_day.py $day $year
 python3 download_input.py $day $year
 Set-Location $year
+[Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 1")
+[Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 0")
