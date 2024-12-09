@@ -15,7 +15,8 @@ python3 new_day.py
 Set-Location $year
 if ([System.IO.File]::Exists(".\download.ps1")) {Clear-Content ".\download.ps1"}
 Write-Output "python3 ..\download_input.py $day $year" >> download.ps1
-Write-Output "if (`$?) { Remove-Item ./download.ps1} " >> download.ps1
-[Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 1")
-[Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 0")
+Write-Output "if (`$?) { Remove-Item ./download.ps1" >> download.ps1
+Write-Output '  [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 1")' >> download.ps1
+Write-Output '  [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("python ./day$day.py 0")' >> download.ps1
+Write-Output '}' >> .\download.ps1
 [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory("./download.ps1")
